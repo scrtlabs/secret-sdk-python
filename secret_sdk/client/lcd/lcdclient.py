@@ -56,15 +56,6 @@ default_fees = {
 default_gas_prices = Coins.from_data([{"amount": 0.25, "denom": "uscrt"}])
 default_gas_adjustment = 1
 
-mainnet_chain_ids = {"secret-2", "secret-3", "secret-4"}
-
-# mainnetConsensusIoPubKey = bytes.fromhex(
-#   "083b1a03661211d5a4cc8d39a77795795862f7730645573b2bcc2c1920c53c04"
-# )
-mainnetConsensusIoPubKey = bytes.fromhex(
-    "53202482cf19e79603db4f75fd18d29e674c1f8c85f4f29ce655aa8d5efc9d2f"
-)  # == base64.b64decode("UyAkgs8Z55YD2091/RjSnmdMH4yF9PKc5lWqjV78nS8=")
-
 REQUEST_CONFIG = {
     "GET_TIMEOUT": 30,
     "POST_TIMEOUT": 30,
@@ -118,10 +109,7 @@ class AsyncLCDClient:
         self.tx = AsyncTxAPI(self)
         self.registration = AsyncRegistrationAPI(self)
 
-        if self.chain_id in mainnet_chain_ids:
-            consensus_io_pub_key = mainnetConsensusIoPubKey
-        else:
-            consensus_io_pub_key = RegistrationAPI(self).consensus_io_pub_key()
+        consensus_io_pub_key = RegistrationAPI(self).consensus_io_pub_key()
         self.encrypt_utils = EncryptionUtils(consensus_io_pub_key, encryption_seed)
 
     def wallet(self, key: Key) -> AsyncWallet:
@@ -309,10 +297,7 @@ class LCDClient(AsyncLCDClient):
         self.tx = TxAPI(self)
         self.registration = RegistrationAPI(self)
 
-        if self.chain_id in mainnet_chain_ids:
-            consensus_io_pub_key = mainnetConsensusIoPubKey
-        else:
-            consensus_io_pub_key = self.registration.consensus_io_pub_key()
+        consensus_io_pub_key = self.registration.consensus_io_pub_key()
         self.encrypt_utils = EncryptionUtils(consensus_io_pub_key, encryption_seed)
 
     async def __aenter__(self):
