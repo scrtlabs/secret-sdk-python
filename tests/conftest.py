@@ -32,7 +32,13 @@ def load_msg_examples():
 
 
 def pytest_configure():
-    setup_localsecret()
-    secret = LCDClient(url='http://localhost:1317', chain_id='secretdev-1')
-    pytest.secret = secret
-    time.sleep(1)
+    try:
+        setup_localsecret()
+        secret = LCDClient(url='http://localhost:1317', chain_id='secretdev-1')
+        pytest.secret = secret
+        time.sleep(1)
+    except (FileNotFoundError, Exception) as e:
+        # Docker not available or local testnet setup failed
+        # Some tests will be skipped but unit tests can still run
+        pytest.secret = None
+        print(f"\nWarning: LocalSecret setup failed ({e}). Integration tests will be skipped.")
