@@ -1,3 +1,4 @@
+
 # <div  align="center"> <p > Python SDK for Secret Network </p>
 
 <br>
@@ -14,23 +15,28 @@ The Secret Software Development Kit (SDK) in Python is a simple library toolkit 
 
 # Table of Contents
 
+- [  Python SDK for Secret Network ](#--python-sdk-for-secret-network-)
+  - [Features](#features)
+- [Table of Contents](#table-of-contents)
 - [API Reference](#api-reference)
 - [Getting Started](#getting-started)
   - [Requirements](#requirements)
   - [Installation](#installation)
   - [Dependencies](#dependencies)
   - [Tests](#tests)
-  - [Code Quality](#code-quality)
 - [Usage Examples](#usage-examples)
   - [Getting Blockchain Information](#getting-blockchain-information)
     - [Async Usage](#async-usage)
   - [Building and Signing Transactions](#building-and-signing-transactions)
-    - [Example Using a Wallet](#example-using-a-wallet-recommended)
+    - [Example Using a Wallet (_recommended_)](#example-using-a-wallet-recommended)
+    - [Batch Transactions](#batch-transactions)
 - [Contributing](#contributing)
   - [Reporting an Issue](#reporting-an-issue)
   - [Requesting a Feature](#requesting-a-feature)
   - [Contributing Code](#contributing-code)
+    - [For new contributors, here is a quick guide:](#for-new-contributors-here-is-a-quick-guide)
   - [Documentation Contributions](#documentation-contributions)
+    - [Need more information on how to contribute?](#need-more-information-on-how-to-contribute)
 - [License](#license)
 
 <br/>
